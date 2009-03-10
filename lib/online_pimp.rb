@@ -3,15 +3,16 @@ require 'yaml'
 require 'rubygems'
 require 'universal_ruby_whois'
 
-
-begin
-  OPTIONS = YAML.load_file(File.expand_path("~/.online_pimp.yml"))
-rescue
-  warn "Config file not found at ~/.online_pimp.yml. Using default options"
-  OPTIONS = {
-    :twitter => true,
-    :domains => %w(.com .org .net .ca)
-  }
+unless $TEST
+  begin
+    OPTIONS = YAML.load_file(File.expand_path("~/.online_pimp.yml"))
+  rescue
+    warn "Config file not found at ~/.online_pimp.yml. Using default options"
+    OPTIONS = {
+      :services => [:twitter],
+      :tld => %w(.com .org .net .ca)
+    }
+  end
 end
 
 module OnlinePimp
