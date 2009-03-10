@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
+require 'online_pimp'
+
+results = OnlinePimp.verify_names(ARGV)
+puts OnlinePimp.display(results)
