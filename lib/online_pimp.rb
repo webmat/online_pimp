@@ -1,7 +1,9 @@
+require 'rubygems'
 require 'universal_ruby_whois'
 
 module OnlinePimp
-  def self.verify_names(*names)
+  def self.verify_name(name)
+    {}
   end
 
   def self.display(results = {})
