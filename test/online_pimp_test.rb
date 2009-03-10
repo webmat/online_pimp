@@ -21,4 +21,6 @@ class OnlinePimpTest < Test::Unit::TestCase
         OnlinePimp.display('twitter.com/webmat' => false)
     end
   end
+  context "when expanding the verifications" do
+  end
 end

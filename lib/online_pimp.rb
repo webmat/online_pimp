@@ -28,6 +28,7 @@ end
 module OnlinePimp
   def self.verify_name(name)
     abort "You must specify a name to check, for example:\nop webmat"
+    verifications = Internal.expand_verifications(name, OPTIONS)
     {}
   end
 
@@ -50,6 +51,18 @@ module OnlinePimp
           longest = r.length if r.length > longest
         end
         longest
+      end
+
+      def expand_verifications(name, options)
+        verifications  = []
+        options[:tld].andand.each do |tld|
+          tld = '.' + tld unless tld =~ /^\./
+          verifications << Verificators::Domain(name + tld)
+        end
+        options[:service].andand.each do |service|
+          verifications << Kernel.const_get("Verificators::#{service.capitalize}").new(name)
+        end
+        verifications
       end
     end
   end
