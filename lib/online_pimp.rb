@@ -16,6 +16,7 @@ end
 
 module OnlinePimp
   def self.verify_name(name)
+    abort "You must specify a name to check, for example:\nop webmat"
     {}
   end
 
