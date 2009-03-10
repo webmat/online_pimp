@@ -57,10 +57,10 @@ module OnlinePimp
         verifications  = []
         options[:tld].andand.each do |tld|
           tld = '.' + tld unless tld =~ /^\./
-          verifications << Verificators::Domain(name + tld)
+          verifications << OnlinePimp::Verificators::Domain.new(name + tld)
         end
         options[:service].andand.each do |service|
-          verifications << Kernel.const_get("Verificators::#{service.capitalize}").new(name)
+          verifications << OnlinePimp::Verificators.const_get(service.to_s.capitalize).new(name)
         end
         verifications
       end
