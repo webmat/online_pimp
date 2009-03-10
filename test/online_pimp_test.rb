@@ -21,6 +21,15 @@ class OnlinePimpTest < Test::Unit::TestCase
         OnlinePimp.display('twitter.com/webmat' => false)
     end
   end
+
+  context "domain verificator" do
+    context "getting instantiated with an invalid name" do
+      should_raise(ArgumentError) do
+        OnlinePimp::Verificators::Domain.new('incomplete')
+      end
+    end
+  end
+
   context "when expanding the verifications" do
   end
 end

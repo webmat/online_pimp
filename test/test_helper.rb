@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'test/unit'
+gem 'shoulda', '~> 2.0'
 require 'shoulda'
+gem 'woulda', '=> 0.2'
+require 'woulda'
 require 'mocha'
 
 $TEST = true
