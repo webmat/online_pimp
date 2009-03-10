@@ -1,7 +1,17 @@
 require 'yaml'
 
 require 'rubygems'
+require 'andand'
+require 'activesupport'
 require 'universal_ruby_whois'
+
+module OnlinePimp
+  module Verificators
+  end
+end
+Dir[ File.dirname(__FILE__) + '/online_pimp/verificators/*.rb' ].each do |f|
+  require f
+end
 
 unless $TEST
   begin
