@@ -1,0 +1,11 @@
+GitHub
+  curl -i http://github.com/api/v1/json/webmat
+    200 => taken
+    406 => not taken
+Twitter
+  curl -i http://twitter.com/webmat
+    200 => taken
+    404 => not taken
+  twitter = RestClient::Resource.new('http://twitter.com')
+  twitter['/webmat'].get :accept => '*/*'
+
