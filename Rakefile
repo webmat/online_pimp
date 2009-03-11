@@ -55,11 +55,16 @@ task :default => :test
 namespace :verificators do
   desc "Clones the example verificator"
   task :new do
-    require 'fileutils'
-    dir = File.join DIR, 'lib/online_pimp/verificators/'
-    new_file = dir + (ENV['NAME'] || 'new_example')
-    new_file << '.rb' unless new_file =~ /\.rb$/
-    FileUtils.cp dir + 'service_example.rb', new_file
+    require 'erb'
+    require 'rubygems'
+    require 'activesupport'
+    service_name  = (ENV['NAME'] || 'new_example')
+
+    dir           = File.join DIR, 'lib/online_pimp/verificators/'
+    new_file      = dir + service_name + '.rb'
+    class_code    = ERB.new( File.read(dir + 'template.rb.erb') ).result(binding)
+
+    File.open(new_file, 'w'){|f| f.write(class_code)}
     puts new_file
   end
 end

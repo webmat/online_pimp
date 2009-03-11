@@ -1,0 +1,7 @@
+module OnlinePimp::Verificators
+  class <%= service_name.classify %> < Base
+    def initialize(name)
+      @name = "http://<%= service_name.downcase %>.com/#{name}"
+    end
+  end
+end
