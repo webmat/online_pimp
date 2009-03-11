@@ -1,13 +1,7 @@
 module OnlinePimp::Verificators
-  class ServiceExample
-    attr_reader :name
-
+  class Flickr < Base
     def initialize(name)
-      @name = "http://example.com/#{name}"
-    end
-
-    def available?
-      true
+      @name = "http://flickr.com/photos/#{name}"
     end
   end
 end
