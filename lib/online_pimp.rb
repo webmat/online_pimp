@@ -42,9 +42,11 @@ module OnlinePimp
   end
 
   def self.display(results = {})
-    resulting_string = ''
-    length = Internal.length_of_longest(results.keys)
-    results.each_pair do |name, availability|
+    resulting_string  = ''
+    length            = Internal.length_of_longest(results.keys)
+    sorted_results    = Internal.sort_hash(results)
+    sorted_results.each do |result|
+      name, availability = *result
       resulting_string << "%-#{length}s : %s\n" % 
                             [name, Internal.availability_string(availability)]
     end
@@ -53,6 +55,10 @@ module OnlinePimp
 
   module Internal
     class << self
+      def sort_hash(hash)
+        hash.keys.sort.inject([]){|memo, k| memo << [k, hash[k]] ; memo}
+      end
+
       def length_of_longest(strings)
         longest = -1
         strings.each do |r|
