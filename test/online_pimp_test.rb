@@ -30,7 +30,7 @@ class OnlinePimpTest < Test::Unit::TestCase
     end
   end
 
-  context "when expanding the verifications" do
+  context "when expanding the verifications that must be done" do
     setup do
       @verifications = OnlinePimp::Internal.expand_verifications('webmat',
                         :tld => %w(.com .org),
@@ -42,6 +42,10 @@ class OnlinePimpTest < Test::Unit::TestCase
       domain_verificators = @verifications.select{|v| v.class.name =~ /Domain/}
       assert domain_verificators.detect{|v| v.name =~ /org/}, domain_verificators.inspect
       assert domain_verificators.detect{|v| v.name =~ /com/}, domain_verificators.inspect
+    end
+
+    should "include a verification for each service" do
+      assert @verifications.detect{|v| v.class.name =~ /Twitter/}
     end
   end
 end
