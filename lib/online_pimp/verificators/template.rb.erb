@@ -1,5 +1,6 @@
 module OnlinePimp::Verificators
-  class <%= service_name.classify %> < Base
+  <%# service_name.constantize would remove the s unnecessarily %>
+  class <%= service_name.capitalize %> < Base
     def initialize(name)
       @name = "http://<%= service_name.downcase %>.com/#{name}"
     end
