@@ -5,5 +5,9 @@ module OnlinePimp::Verificators
       raise ArgumentError, "Must be a complete domain with the tld" unless domain =~ /.+\..+/
       @name = domain
     end
+
+    def available?
+      Whois.find(name).available?
+    end
   end
 end
