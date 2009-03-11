@@ -34,7 +34,7 @@ class OnlinePimpTest < Test::Unit::TestCase
     setup do
       @verifications = OnlinePimp::Internal.expand_verifications('webmat',
                         :tld => %w(.com .org),
-                        :service => [:twitter]
+                        :services => [:twitter]
                       )
     end
 

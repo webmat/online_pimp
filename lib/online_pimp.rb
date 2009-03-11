@@ -43,7 +43,7 @@ module OnlinePimp
     length = Internal.length_of_longest(results.keys)
     results.each_pair do |name, availability|
       resulting_string << "%-#{length}s : %s\n" % 
-                            [name, (availability ? "available" : "taken")]
+                            [name, Internal.availability_string(availability)]
     end
     resulting_string
   end
@@ -64,10 +64,21 @@ module OnlinePimp
           tld = '.' + tld unless tld =~ /^\./
           verifications << OnlinePimp::Verificators::Domain.new(name + tld)
         end
-        options[:service].andand.each do |service|
+        options[:services].andand.each do |service|
           verifications << OnlinePimp::Verificators.const_get(service.to_s.capitalize).new(name)
         end
         verifications
+      end
+
+      def availability_string(result)
+        case result
+        when nil
+          'unknown'
+        when true
+          'available'
+        when false
+          'taken'
+        end
       end
     end
   end
