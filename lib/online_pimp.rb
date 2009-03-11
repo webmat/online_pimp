@@ -10,7 +10,10 @@ module OnlinePimp
   module Verificators
   end
 end
-Dir[ File.dirname(__FILE__) + '/online_pimp/verificators/*.rb' ].each do |f|
+
+dir = File.dirname(__FILE__)
+require dir + '/online_pimp/verificators/base.rb'
+Dir[ dir + '/online_pimp/verificators/*.rb' ].each do |f|
   require f
 end
 
