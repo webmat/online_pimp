@@ -1,5 +1,5 @@
 module OnlinePimp::Verificators
-  class ServiceExample
+  class ServiceExample < Base
     attr_reader :name
 
     def initialize(name)
