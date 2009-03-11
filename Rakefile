@@ -6,7 +6,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name        = "online_pimp"
-    s.summary     = %Q{see at a glance whether the business/product/user name you're thinking of is available here and there}
+    s.summary     = %Q{op is gonna represent you in this hard online world, ho}
     s.email       = "webmat@gmail.com"
     s.homepage    = "http://github.com/webmat/online_pimp"
     s.description = %Q{see at a glance whether the business/product/user name you're thinking of is available here and there}
