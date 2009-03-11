@@ -36,7 +36,7 @@ module OnlinePimp
     verifications = Internal.expand_verifications(name, OPTIONS)
     verifications.inject({}) {|memo, v| 
       memo[v.name] = v.available? 
-      sleep(1)
+      sleep(0.2)
       memo
     }
   end
