@@ -15,7 +15,8 @@ end
 
 unless $TEST
   begin
-    OPTIONS = YAML.load_file(File.expand_path("~/.online_pimp.yml"))
+    OPTIONS = HashWithIndifferentAccess.new(
+      YAML.load_file(File.expand_path("~/.online_pimp.yml")))
   rescue
     warn "Config file not found at ~/.online_pimp.yml. Using default options"
     OPTIONS = {
@@ -27,16 +28,15 @@ end
 
 module OnlinePimp
   def self.verify_name(name)
-    abort "You must specify a name to check, for example:\nop webmat"
+    abort "You must specify a name to check, for example:\nop webmat" unless name
     verifications = Internal.expand_verifications(name, OPTIONS)
-    {}
+    verifications.inject({}) {|memo, v| memo[v.name] = v.available? ; memo}
   end
 
   def self.display(results = {})
     resulting_string = ''
     length = Internal.length_of_longest(results.keys)
-    results.each_pair do |result|
-      name, availability = *result
+    results.each_pair do |name, availability|
       resulting_string << "%-#{length}s : %s\n" % 
                             [name, (availability ? "available" : "taken")]
     end
