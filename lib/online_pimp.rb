@@ -30,7 +30,11 @@ module OnlinePimp
   def self.verify_name(name)
     abort "You must specify a name to check, for example:\nop webmat" unless name
     verifications = Internal.expand_verifications(name, OPTIONS)
-    verifications.inject({}) {|memo, v| memo[v.name] = v.available? ; memo}
+    verifications.inject({}) {|memo, v| 
+      memo[v.name] = v.available? 
+      sleep(1)
+      memo
+    }
   end
 
   def self.display(results = {})
