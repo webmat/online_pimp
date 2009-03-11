@@ -8,7 +8,7 @@ module OnlinePimp::Verificators
     rescue RestClient::ResourceNotFound
       true
     rescue => ex
-      warn "Error (#{self.class}, #{name}): #{ex.inspect}\n#{response.inspect}"
+      warn "Error (#{self.class}, #{name}): #{ex.inspect}"
       nil
     end
   end
