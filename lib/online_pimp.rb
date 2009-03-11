@@ -4,6 +4,7 @@ require 'rubygems'
 require 'andand'
 require 'activesupport'
 require 'universal_ruby_whois'
+require 'rest_client'
 
 module OnlinePimp
   module Verificators
