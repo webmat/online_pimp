@@ -7,7 +7,9 @@ module OnlinePimp::Verificators
     end
 
     def available?
-      Whois.find(name).available?
+      whois = Whois.find(name)
+      return nil unless whois
+      whois.available?
     end
   end
 end
