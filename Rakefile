@@ -5,12 +5,12 @@ DIR = File.dirname __FILE__
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name = "online_pimp"
-    s.summary = %Q{see at a glance whether the business/product/user name you're thinking of is available here and there}
-    s.email = "webmat@gmail.com"
-    s.homepage = "http://github.com/webmat/online_pimp"
+    s.name        = "online_pimp"
+    s.summary     = %Q{see at a glance whether the business/product/user name you're thinking of is available here and there}
+    s.email       = "webmat@gmail.com"
+    s.homepage    = "http://github.com/webmat/online_pimp"
     s.description = %Q{see at a glance whether the business/product/user name you're thinking of is available here and there}
-    s.authors = ["Mathieu Martin"]
+    s.authors     = ["Mathieu Martin"]
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
