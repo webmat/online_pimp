@@ -1,5 +1,7 @@
 require 'rake'
 
+DIR = File.dirname __FILE__
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
@@ -49,3 +51,15 @@ rescue LoadError
 end
 
 task :default => :test
+
+namespace :verificators do
+  desc "Clones the example verificator"
+  task :new do
+    require 'fileutils'
+    dir = File.join DIR, 'lib/online_pimp/verificators/'
+    new_file = dir + (ENV['NAME'] || 'new_example')
+    new_file << '.rb' unless new_file =~ /\.rb$/
+    FileUtils.cp dir + 'service_example.rb', new_file
+    puts new_file
+  end
+end
